@@ -1,0 +1,667 @@
+/* ============================================================
+   LSM — HOJA DE ESTILOS
+   Paleta: azules profesionales
+   Fuente: DM Sans (cuerpo) + DM Serif Display (títulos)
+   ============================================================ */
+
+
+/* ── 1. VARIABLES GLOBALES ──────────────────────────────────
+   Cambia estos valores para ajustar toda la paleta de color.
+   ---------------------------------------------------------- */
+:root {
+  /* Azules principales */
+  --azul-oscuro:    #0f2a4a;   /* fondo nav, títulos */
+  --azul-medio:     #1a56a0;   /* color de acento principal */
+  --azul-claro:     #2d7dd2;   /* hover, botones activos */
+  --azul-suave:     #dbeafe;   /* fondos de etiquetas y chips */
+  --azul-palido:    #eff6ff;   /* fondo de tarjetas hover, hero */
+
+  /* Neutros */
+  --blanco:         #ffffff;
+  --fondo:          #f0f4f9;   /* fondo general de la página */
+  --texto:          #0f2a4a;   /* texto principal (azul muy oscuro) */
+  --gris:           #5a7090;   /* texto secundario */
+  --borde:          #c9d9ed;   /* líneas y bordes */
+  --gris-suave:     #e2eaf4;   /* fondos suaves */
+
+  /* Sombras */
+  --sombra:         0 2px 16px rgba(15, 42, 74, 0.10);
+  --sombra-hover:   0 6px 24px rgba(26, 86, 160, 0.16);
+
+  /* Dimensiones */
+  --radio:          14px;
+  --radio-grande:   22px;
+  --nav-alto:       64px;
+}
+
+
+/* ── 2. RESET BÁSICO ────────────────────────────────────────
+   ---------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--fondo);
+  color: var(--texto);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+/* ── 3. BARRA DE NAVEGACIÓN SUPERIOR ───────────────────────
+   ---------------------------------------------------------- */
+.nav {
+  background-color: var(--azul-oscuro);
+  padding: 0 28px;
+  height: var(--nav-alto);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(15,42,74,0.25);
+}
+
+/* Logo */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.nav-logo-siglas {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  color: var(--blanco);
+  letter-spacing: 1px;
+}
+
+.nav-logo-sep {
+  color: var(--azul-claro);
+  font-size: 18px;
+}
+
+.nav-logo-nombre {
+  font-size: 13px;
+  font-weight: 500;
+  color: #8db4e0;    /* azul pálido para subtítulo del logo */
+  letter-spacing: 0.3px;
+}
+
+/* Buscador */
+.caja-busqueda {
+  flex: 1;
+  max-width: 400px;
+  position: relative;
+}
+
+.caja-busqueda input {
+  width: 100%;
+  padding: 10px 16px 10px 42px;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  border-radius: 30px;
+  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--blanco);
+  background: rgba(255,255,255,0.10);
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.caja-busqueda input::placeholder {
+  color: #8db4e0;
+}
+
+.caja-busqueda input:focus {
+  border-color: var(--azul-claro);
+  background: rgba(255,255,255,0.16);
+}
+
+/* Icono lupa dentro del buscador */
+.icono-busqueda {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: #8db4e0;
+  pointer-events: none;
+}
+
+/* Contador */
+.nav-total {
+  margin-left: auto;
+  font-size: 13px;
+  color: #8db4e0;
+  flex-shrink: 0;
+}
+
+.nav-total strong {
+  color: var(--blanco);
+  font-weight: 700;
+}
+
+
+/* ── 4. SECCIÓN HERO (portada) ──────────────────────────────
+   ---------------------------------------------------------- */
+.hero {
+  text-align: center;
+  padding: 60px 20px 36px;
+  background: linear-gradient(180deg, var(--azul-palido) 0%, var(--fondo) 100%);
+  border-bottom: 1px solid var(--borde);
+}
+
+/* Chip de categoría arriba del título */
+.hero-etiqueta {
+  display: inline-block;
+  background-color: var(--azul-suave);
+  color: var(--azul-medio);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 16px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #bfdbfe;
+}
+
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 400;
+  line-height: 1.15;
+  margin-bottom: 14px;
+  color: var(--azul-oscuro);
+}
+
+.hero h1 em {
+  color: var(--azul-claro);
+  font-style: italic;
+}
+
+.hero p {
+  font-size: 15px;
+  color: var(--gris);
+  max-width: 440px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+
+/* ── 5. BOTONES DE FILTRO ───────────────────────────────────
+   ---------------------------------------------------------- */
+.filtros {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 24px 20px 20px;
+}
+
+.btn-filtro {
+  padding: 8px 22px;
+  border-radius: 30px;
+  border: 1.5px solid var(--borde);
+  background: var(--blanco);
+  color: var(--gris);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s;
+  letter-spacing: 0.2px;
+}
+
+.btn-filtro:hover {
+  border-color: var(--azul-claro);
+  color: var(--azul-claro);
+  background: var(--azul-palido);
+}
+
+/* Estado activo del filtro */
+.btn-filtro.activo {
+  background-color: var(--azul-medio);
+  border-color: var(--azul-medio);
+  color: var(--blanco);
+  box-shadow: 0 2px 8px rgba(26,86,160,0.25);
+}
+
+
+/* ── 6. CONTENEDOR PRINCIPAL ────────────────────────────────
+   ---------------------------------------------------------- */
+.contenedor {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px 110px;
+}
+
+/* Encabezado de cada sección (Abecedario / Números / etc.) */
+.titulo-seccion {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--azul-medio);
+  margin: 32px 0 14px 2px;
+  border-left: 3px solid var(--azul-claro);
+  padding-left: 10px;
+}
+
+
+/* ── 7. GRID DE TARJETAS ────────────────────────────────────
+   ---------------------------------------------------------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+  gap: 12px;
+}
+
+
+/* ── 8. TARJETA INDIVIDUAL ──────────────────────────────────
+   ---------------------------------------------------------- */
+.tarjeta {
+  background-color: var(--blanco);
+  border: 1.5px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 16px 12px 14px;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.tarjeta:hover {
+  transform: translateY(-4px);
+  border-color: var(--azul-claro);
+  box-shadow: var(--sombra-hover);
+}
+
+.tarjeta:active {
+  transform: scale(0.97);
+}
+
+/* Imagen de la seña — ocupa todo el ancho disponible */
+.tarjeta-mano {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--azul-palido);
+}
+
+.tarjeta-mano img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Nombre principal de la seña */
+.tarjeta-nombre {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--azul-oscuro);
+  margin-bottom: 2px;
+}
+
+/* Etiqueta de categoría */
+.tarjeta-cat {
+  font-size: 10px;
+  color: var(--gris);
+  text-transform: capitalize;
+  letter-spacing: 0.3px;
+}
+
+/* Botón de favorito — aparece al hacer hover en la tarjeta */
+.btn-fav {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: var(--blanco);
+  border: 1.5px solid var(--borde);
+  border-radius: 8px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s, border-color 0.15s, background 0.15s;
+}
+
+.btn-fav svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--gris);
+  fill: none;
+  transition: stroke 0.15s, fill 0.15s;
+}
+
+.tarjeta:hover .btn-fav {
+  opacity: 1;
+}
+
+/* Guardado: siempre visible y relleno */
+.btn-fav.guardado {
+  opacity: 1;
+  border-color: var(--azul-medio);
+  background: var(--azul-suave);
+}
+
+.btn-fav.guardado svg {
+  stroke: var(--azul-medio);
+  fill: var(--azul-medio);
+}
+
+
+/* ── 9. PANEL DE DETALLE ────────────────────────────────────
+   ---------------------------------------------------------- */
+.fondo-detalle {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 25, 47, 0.55);
+  z-index: 300;
+  align-items: flex-end;
+  justify-content: center;
+  backdrop-filter: blur(2px);
+}
+
+.fondo-detalle.abierto {
+  display: flex;
+  animation: aparece 0.2s ease;
+}
+
+.panel-detalle {
+  background: var(--blanco);
+  border-radius: var(--radio-grande) var(--radio-grande) 0 0;
+  padding: 20px 24px 36px;
+  width: 100%;
+  max-width: 560px;
+  max-height: 92vh;
+  overflow-y: auto;
+  animation: sube 0.25s ease;
+}
+
+/* Barra decorativa */
+.panel-barra {
+  width: 44px;
+  height: 4px;
+  background: var(--gris-suave);
+  border-radius: 2px;
+  margin: 0 auto 22px;
+}
+
+/* Encabezado del detalle: imagen + nombre */
+.detalle-encabezado {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+/* Imagen grande en el panel de detalle */
+.detalle-mano {
+  width: 110px;
+  height: 110px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--azul-palido);
+  border: 2px solid var(--borde);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detalle-mano img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detalle-titulo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 34px;
+  font-weight: 400;
+  color: var(--azul-oscuro);
+  line-height: 1;
+}
+
+/* Chip de categoría */
+.detalle-etiqueta {
+  display: inline-block;
+  background: var(--azul-suave);
+  color: var(--azul-medio);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 4px 12px;
+  border-radius: 10px;
+  margin-top: 8px;
+  border: 1px solid #bfdbfe;
+}
+
+/* Descripción */
+.detalle-descripcion {
+  font-size: 14px;
+  color: var(--gris);
+  line-height: 1.75;
+  margin-top: 14px;
+}
+
+/* Recuadro de consejo */
+.detalle-consejo {
+  background: var(--azul-palido);
+  border-left: 4px solid var(--azul-claro);
+  border-radius: 0 10px 10px 0;
+  padding: 12px 16px;
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--azul-oscuro);
+  line-height: 1.65;
+}
+
+.detalle-consejo strong {
+  color: var(--azul-claro);
+}
+
+/* Sección de sensores de dedos */
+.seccion-sensores {
+  margin-top: 22px;
+}
+
+.sensores-titulo {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--gris);
+  margin-bottom: 12px;
+}
+
+.barras-sensores {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  height: 80px;
+}
+
+.sensor-columna {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.sensor-barra {
+  width: 100%;
+  border-radius: 4px 4px 0 0;
+  min-height: 4px;
+  transition: height 0.4s ease;
+}
+
+/* Color de barra por dedo */
+.sensor-barra.pulgar  { background-color: #1a56a0; }
+.sensor-barra.indice  { background-color: #2d7dd2; }
+.sensor-barra.medio   { background-color: #60a5fa; }
+.sensor-barra.anular  { background-color: #93c5fd; }
+.sensor-barra.menique { background-color: #bfdbfe; }
+
+.sensor-nombre { font-size: 10px; color: var(--gris); }
+.sensor-valor  { font-size: 11px; font-weight: 700; color: var(--texto); }
+
+/* Botón cerrar */
+.btn-cerrar {
+  width: 100%;
+  padding: 13px;
+  margin-top: 24px;
+  background: var(--fondo);
+  border: 1.5px solid var(--borde);
+  border-radius: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gris);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.btn-cerrar:hover {
+  background: var(--azul-suave);
+  color: var(--azul-medio);
+  border-color: var(--azul-claro);
+}
+
+
+/* ── 10. ESTADO VACÍO ───────────────────────────────────────
+   ---------------------------------------------------------- */
+.estado-vacio {
+  text-align: center;
+  padding: 72px 20px;
+  display: none;
+}
+
+.estado-vacio.visible {
+  display: block;
+}
+
+.vacio-icono {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 16px;
+  color: var(--borde);
+}
+
+.vacio-icono svg {
+  width: 100%;
+  height: 100%;
+}
+
+.estado-vacio p {
+  color: var(--gris);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+
+/* ── 11. BARRA INFERIOR (solo en celular) ───────────────────
+   ---------------------------------------------------------- */
+.nav-inferior {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: var(--blanco);
+  border-top: 1.5px solid var(--borde);
+  padding: 8px 0 max(8px, env(safe-area-inset-bottom));
+  justify-content: space-around;
+}
+
+.nav-inferior-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 12px;
+  color: var(--gris);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  transition: color 0.15s;
+}
+
+.nav-inferior-item.activo {
+  color: var(--azul-medio);
+}
+
+.nav-inferior-item svg {
+  width: 22px;
+  height: 22px;
+  stroke-width: 2;
+}
+
+
+/* ── 12. ANIMACIONES ────────────────────────────────────────
+   ---------------------------------------------------------- */
+@keyframes aparece {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes sube {
+  from { transform: translateY(28px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+@keyframes entraTarjeta {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+.tarjeta-anima {
+  animation: entraTarjeta 0.22s ease both;
+}
+
+
+/* ── 13. RESPONSIVE ─────────────────────────────────────────
+   Ajustes para pantallas pequeñas (menos de 600px)
+   ---------------------------------------------------------- */
+@media (max-width: 600px) {
+  .hero               { padding: 36px 16px 24px; }
+  .hero h1            { font-size: 30px; }
+  .grid               { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; }
+  .nav-total          { display: none; }
+  .nav-logo-nombre    { display: none; }
+  .nav-inferior       { display: flex; }
+  .contenedor         { padding-bottom: 96px; }
+}
+
+/* Panel centrado en escritorio */
+@media (min-width: 601px) {
+  .panel-detalle  { border-radius: var(--radio-grande); margin-bottom: 28px; }
+  .fondo-detalle  { align-items: center; }
+}

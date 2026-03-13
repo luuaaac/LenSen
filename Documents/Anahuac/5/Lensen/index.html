@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>LSM · Diccionario de Señas Mexicanas</title>
+
+  <!-- ── FUENTES ──────────────────────────────────────────── -->
+  <!-- DM Sans: cuerpo limpio y moderno -->
+  <!-- DM Serif Display: títulos con carácter -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+  <!-- ── ESTILOS ──────────────────────────────────────────── -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════════════════════
+       BARRA DE NAVEGACIÓN SUPERIOR
+       Contiene: logo | buscador | contador de señas
+  ════════════════════════════════════════════════════════ -->
+  <nav class="nav">
+
+    <div class="nav-logo">
+      <span class="nav-logo-siglas">LSM</span>
+      <span class="nav-logo-sep">·</span>
+      <span class="nav-logo-nombre">Señas Mexicanas</span>
+    </div>
+
+    <div class="caja-busqueda">
+      <svg class="icono-busqueda" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input
+        type="text"
+        id="inputBusqueda"
+        placeholder="Buscar seña..."
+        autocomplete="off"
+      >
+    </div>
+
+    <div class="nav-total">
+      <strong id="totalNum">0</strong> señas
+    </div>
+
+  </nav>
+
+
+  <!-- ════════════════════════════════════════════════════════
+       HERO — Portada principal
+       Se oculta cuando el usuario escribe en el buscador
+  ════════════════════════════════════════════════════════ -->
+  <section class="hero" id="seccionHero">
+    <div class="hero-etiqueta">Lengua de Señas Mexicana</div>
+    <h1>Aprende <em>LSM</em><br>a tu ritmo</h1>
+    <p>Diccionario interactivo con el abecedario completo,<br>números y palabras del día a día.</p>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════
+       FILTROS DE CATEGORÍA
+       Los botones los genera JavaScript (dibujarFiltros)
+  ════════════════════════════════════════════════════════ -->
+  <div class="filtros" id="contenedorFiltros"></div>
+
+
+  <!-- ════════════════════════════════════════════════════════
+       ÁREA PRINCIPAL — GRID DE TARJETAS
+  ════════════════════════════════════════════════════════ -->
+  <main class="contenedor" id="areaPrincipal">
+
+    <!-- Se muestra si no hay resultados -->
+    <div class="estado-vacio" id="mensajeVacio">
+      <div class="vacio-icono">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.35-4.35"/>
+        </svg>
+      </div>
+      <p>No encontramos señas con ese término.<br>Intenta con otra palabra.</p>
+    </div>
+
+    <!-- Las tarjetas se insertan aquí con JavaScript (dibujarGrid) -->
+    <div id="contenedorGrid"></div>
+
+  </main>
+
+
+  <!-- ════════════════════════════════════════════════════════
+       PANEL DE DETALLE — Ventana emergente
+       Abre: clic en tarjeta
+       Cierra: clic en fondo oscuro | botón Cerrar | tecla Escape
+  ════════════════════════════════════════════════════════ -->
+  <div class="fondo-detalle" id="fondoDetalle" onclick="cerrarDetalle(event)">
+    <div class="panel-detalle" id="panelDetalle">
+      <div class="panel-barra"></div>
+      <!-- Contenido inyectado por abrirDetalle() en app.js -->
+      <div id="contenidoDetalle"></div>
+      <button class="btn-cerrar" onclick="cerrarDetalleBton()">Cerrar</button>
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════════════════════════
+       NAV INFERIOR — Solo visible en celular
+       Cambiar de categoría con un toque
+  ════════════════════════════════════════════════════════ -->
+  <nav class="nav-inferior">
+
+    <button class="nav-inferior-item activo" onclick="cambiarTab('todos', this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <rect x="3" y="3" width="7" height="7" rx="1"/>
+        <rect x="14" y="3" width="7" height="7" rx="1"/>
+        <rect x="3" y="14" width="7" height="7" rx="1"/>
+        <rect x="14" y="14" width="7" height="7" rx="1"/>
+      </svg>
+      Todos
+    </button>
+
+    <button class="nav-inferior-item" onclick="cambiarTab('abecedario', this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/>
+      </svg>
+      A – Z
+    </button>
+
+    <button class="nav-inferior-item" onclick="cambiarTab('favoritos', this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+      </svg>
+      Guardados
+    </button>
+
+  </nav>
+
+
+  <!-- ════════════════════════════════════════════════════════
+       SCRIPTS — Al final para cargar la página más rápido
+  ════════════════════════════════════════════════════════ -->
+  <script src="data/senyas.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
