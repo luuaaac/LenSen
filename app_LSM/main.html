@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LenSen</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+    <link href="css/estilo.css" rel="stylesheet"/>
+</head>
+<body>
+    <header>
+    <div class="header-izq">
+      <img src="images/logo.jpeg" alt="Len Sen logo" class="logo-img"/>
+      <span class="nombre-app">Len Sen</span>
+      <span class="slogan-sep">·</span>
+      <span class="slogan">Traduciendo señas, creando sentido</span>
+    </div>
+    <a href="index.html" class="btn-comenzar">Comenzar a Aprender</a>
+  </header>
+ 
+  <nav>
+    <ul class="nav-links">
+      <li><a href="#" class="activo" onclick="return mostrar('home', this)">Home</a></li>
+      <li><a href="#" onclick="return mostrar('objetivo', this)">Objetivo</a></li>
+      <li><a href="#" onclick="return mostrar('nosotros', this)">Nosotros</a></li>
+    </ul>
+  </nav>
+ 
+   <section id="home" class="visible">
+ 
+    <div class="hero">
+      <div class="hero-texto">
+        <div class="etiqueta">Electrónica Digital · LSM</div>
+        <h1>Aprende Lengua de Señas<br/>con un <span>guante inteligente</span></h1>
+        <p>
+          Len Sen es una plataforma educativa que combina tecnología wearable con
+          aprendizaje interactivo. Un guante con sensores flex y un Arduino Nano
+          detecta en tiempo real las letras del abecedario en Lengua de Señas
+          Mexicana y te da retroalimentación al instante.
+        </p>
+        <a href="lecciones.html" class="btn-comenzar">Comenzar a Aprender</a>
+      </div>
+      <div class="hero-visual">
+        <img src="images/logo.jpeg" alt="Len Sen"/>
+      </div>
+    </div>
+ 
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icono">🧤</div>
+        <h3>Guante con sensores</h3>
+        <p>Sensores flex en cada dedo capturan la posición de la mano y transmiten los datos al microcontrolador en tiempo real.</p>
+      </div>
+      <div class="card">
+        <div class="card-icono">⚡</div>
+        <h3>Arduino Nano v3</h3>
+        <p>El microcontrolador procesa las lecturas analógicas y las compara con rangos predefinidos para identificar cada letra del abecedario.</p>
+      </div>
+      <div class="card">
+        <div class="card-icono">💻</div>
+        <h3>Conexión Web Serial</h3>
+        <p>La app recibe la letra detectada directamente desde el USB del Arduino vía Web Serial API, sin instalar software adicional.</p>
+      </div>
+      <div class="card">
+        <div class="card-icono">📖</div>
+        <h3>Lecciones interactivas</h3>
+        <p>La plataforma guía al usuario letra por letra, confirma si la seña es correcta y registra el progreso del aprendizaje.</p>
+      </div>
+    </div>
+ 
+    <h2 class="seccion-titulo">¿Cómo <span>funciona</span>?</h2>
+    <div class="pasos">
+      <div class="paso">
+        <div class="paso-num">1</div>
+        <div class="paso-info">
+          <h4>El usuario se pone el guante</h4>
+          <p>El guante lleva 5 sensores flex, uno por dedo, conectados al Arduino Nano que se alimenta por USB desde la computadora.</p>
+        </div>
+      </div>
+      <div class="paso">
+        <div class="paso-num">2</div>
+        <div class="paso-info">
+          <h4>El Arduino clasifica la seña</h4>
+          <p>El código en el Arduino compara las lecturas de los sensores con rangos predefinidos para cada letra y envía la letra identificada por el puerto serial.</p>
+        </div>
+      </div>
+      <div class="paso">
+        <div class="paso-num">3</div>
+        <div class="paso-info">
+          <h4>La app recibe la letra en tiempo real</h4>
+          <p>Usando la Web Serial API, Len Sen lee los datos del Arduino y muestra la letra detectada en pantalla de forma instantánea.</p>
+        </div>
+      </div>
+      <div class="paso">
+        <div class="paso-num">4</div>
+        <div class="paso-info">
+          <h4>Retroalimentación y progreso</h4>
+          <p>La app confirma si la seña fue correcta ✅ o indica la corrección ❌, guiando al usuario a través del abecedario de forma progresiva.</p>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="banner-cta">
+      <div>
+        <h2>¿Listo para empezar?</h2>
+        <p>Conecta tu guante y aprende las 27 letras del abecedario en LSM.</p>
+      </div>
+      <a href="lecciones.html" class="btn-banner">Ir a las lecciones →</a>
+    </div>
+ 
+  </section>
+ 
+ 
+  <!-- ═══ OBJETIVO ═══ -->
+  <section id="objetivo">
+    <div class="page-titulo">Nuestro <span>Objetivo</span></div>
+    <p class="page-sub">
+      [Describe aquí el propósito del proyecto: impacto social, contexto académico,
+      accesibilidad que promueve, etc.]
+    </p>
+    <div class="placeholder">
+      <div class="pi">🎯</div>
+      Contenido en construcción — agrega tu información aquí
+    </div>
+  </section>
+ 
+ 
+  <!-- ═══ NOSOTROS ═══ -->
+  <section id="nosotros">
+    <div class="page-titulo">El <span>Equipo</span></div>
+    <p class="page-sub">
+      [Agrega aquí los integrantes del equipo, institución, semestre y roles.]
+    </p>
+    <div class="placeholder">
+      <div class="pi">👥</div>
+      Contenido en construcción — agrega los integrantes aquí
+    </div>
+  </section>
+ 
+ 
+  <footer>
+    Len Sen · Proyecto de Electrónica Digital &nbsp;·&nbsp; Lengua de Señas Mexicana (LSM)
+  </footer>
+ 
+  <script>
+    function mostrar(id, link) {
+      document.querySelectorAll('section').forEach(s => s.classList.remove('visible'));
+      document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('activo'));
+      document.getElementById(id).classList.add('visible');
+      link.classList.add('activo');
+      return false;
+    }
+  </script>
+</body>
+</html>
